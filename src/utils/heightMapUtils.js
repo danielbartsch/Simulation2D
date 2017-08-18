@@ -1,7 +1,7 @@
 // @flow
 
 import { range } from 'lodash'
-import { noise } from './noise'
+import { normalizedNoise } from './noise'
 import type { HeightMap } from '../flowTypes/Terrain'
 
 const reduceHeightMapValues = (heightMap: HeightMap, min: number, max: number, amountOfValues: number): HeightMap => {
@@ -18,7 +18,7 @@ const reduceHeightMapValues = (heightMap: HeightMap, min: number, max: number, a
 	}))
 }
 
-export const normalizeHeightMap = (heightMap: HeightMap, min: number, max: number): HeightMap =>
+const normalizeHeightMap = (heightMap: HeightMap, min: number, max: number): HeightMap =>
 	heightMap.map(yArray => yArray.map(value => (value + Math.abs(min)) / (max + Math.abs(min))))
 
 export const generateHeightMap = (width: number, height: number) => {
@@ -29,7 +29,7 @@ export const generateHeightMap = (width: number, height: number) => {
 	for (let x = 0; x < width; x++) {
 		heightMap[x] = new Array(height)
 		for (let y = 0; y < height; y++) {
-			heightMap[x][y] = noise(x / (width / 6), y / (height / 6))
+			heightMap[x][y] = normalizedNoise(x / (width / 6), y / (height / 6))
 			if (heightMap[x][y] > maxPerlin) {
 				maxPerlin = heightMap[x][y]
 			}
@@ -39,7 +39,7 @@ export const generateHeightMap = (width: number, height: number) => {
 		}
 	}
 
-	return reduceHeightMapValues(normalizeHeightMap(heightMap, minPerlin, maxPerlin), 0, 1, 10)
+	return reduceHeightMapValues(heightMap, 0, 1, 10)
 }
 
 const getSortedPoints = (heightMap: HeightMap): Array<number> =>

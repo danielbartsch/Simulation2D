@@ -54,3 +54,6 @@ export const noise = (xCoordinate: number, yCoordinate: number): number => {
 		),
 	)
 }
+
+export const normalizedNoise = (xCoordinate: number, yCoordinate: number): number =>
+	(noise(xCoordinate, yCoordinate) + 1) / 2
