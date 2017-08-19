@@ -1,14 +1,5 @@
 // @flow
 
-import { range } from 'lodash'
-
-const permutation: Array<number> = range(256).map(() => parseInt(Math.random() * 255, 10))
-
-const permutations: Array<number> = new Array(512)
-for (let i = 0; i < permutation.length; i++) {
-	permutations[i] = permutations[i + 256] = permutation[i] // eslint-disable-line no-multi-assign
-}
-
 const lerp = (t, a, b) => a + (t * (b - a))
 
 const grad = (hash, x, y, z) => {
@@ -20,7 +11,7 @@ const grad = (hash, x, y, z) => {
 
 const fade = value => value * value * value * ((value * ((value * 6) - 15)) + 10)
 
-export const noise = (xCoordinate: number, yCoordinate: number): number => {
+export const noise = (xCoordinate: number, yCoordinate: number, permutations: Array<number>): number => {
 	// Find unit square that contains point.
 	const X = Math.floor(xCoordinate) & 255
 	const Y = Math.floor(yCoordinate) & 255
@@ -55,5 +46,5 @@ export const noise = (xCoordinate: number, yCoordinate: number): number => {
 	)
 }
 
-export const normalizedNoise = (xCoordinate: number, yCoordinate: number): number =>
-	(noise(xCoordinate, yCoordinate) + 1) / 2
+export const normalizedNoise = (xCoordinate: number, yCoordinate: number, permutations: Array<number>): number =>
+	(noise(xCoordinate, yCoordinate, permutations) + 1) / 2

@@ -2,20 +2,22 @@
 
 import React, { Component } from 'react'
 import Terrain from './components/Terrain'
-import { generateHeightMap } from './utils/heightMapUtils'
-import { heightMapToTerrain } from './utils/heightMapToTerrain'
+import { generateNoiseGrid } from './utils/noiseGridUtils'
+import { noiseGridToTerrain } from './utils/noiseGridToTerrain'
 
 class App extends Component {
 	render() {
 		return (
 			<div>
-				<Terrain
-					width={1000}
-					height={1000}
-					terrainGrid={heightMapToTerrain(generateHeightMap(200, 200))}
-					pixelWidth={5}
-					pixelHeight={5}
-				/>
+				<div style={{ position: 'absolute' }}>
+					<Terrain
+						width={1000}
+						height={1000}
+						terrainGrid={noiseGridToTerrain(generateNoiseGrid(100, 100))}
+						pixelWidth={10}
+						pixelHeight={10}
+					/>
+				</div>
 			</div>
 		)
 	}
