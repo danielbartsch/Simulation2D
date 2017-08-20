@@ -30,4 +30,6 @@ export type Foliage = {
     hasGerminated: boolean
 }
 
-export type FoliageGrid = Array2D<{ fertility: number, foliage?: Foliage }>
+export type FoliageGridElement = { fertility: number, foliage?: Foliage }
+
+export type FoliageGrid = Array2D<FoliageGridElement>

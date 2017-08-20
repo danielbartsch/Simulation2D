@@ -27,6 +27,7 @@ class App extends Component {
 						width={1000}
 						height={1000}
 						foliageGrid={noiseGridToFoliage(generateNoiseGrid(100, 100), terrainGrid)}
+						terrainGrid={terrainGrid}
 						pixelWidth={10}
 						pixelHeight={10}
 					/>
