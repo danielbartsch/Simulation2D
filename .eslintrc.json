@@ -33,6 +33,7 @@
         "no-bitwise": 0,
         "no-unused-vars": 1,
         "no-multiple-empty-lines": [2, { "max": 1 }],
+        "arrow-parens": [2, "as-needed"],
         "react/prefer-stateless-function": [0],
         "react/jsx-filename-extension": [0],
         "react/jsx-indent-props": ["error", "tab"],
