@@ -44,13 +44,22 @@ class FoliageCanvas extends Component {
 				const { foliage } = foliageGrid[x][y]
 
 				if (foliage) {
+					let foliageHeight = 1
+					let foliageWidth = pixelWidth / 3
+					context.fillStyle = 'rgba(0,255,0,0.8)'
+
 					if (foliage.hasGerminated) {
 						context.fillStyle = 'rgba(255,0,0,0.8)'
-						context.fillRect(x * pixelWidth, y * pixelHeight, pixelWidth / 2, pixelHeight * foliage.size)
-					} else {
-						context.fillStyle = 'rgba(0,255,0,0.8)'
-						context.fillRect(x * pixelWidth, y * pixelHeight, pixelWidth / 3, 1)
+						foliageHeight = pixelHeight * foliage.size
+						foliageWidth = pixelWidth / 4
 					}
+
+					context.fillRect(
+						(x * pixelWidth) + ((pixelWidth / 2) - (foliageWidth / 2)),
+						((y * pixelHeight) + pixelHeight) - foliageHeight,
+						foliageWidth,
+						foliageHeight
+					)
 				}
 			}
 		}
