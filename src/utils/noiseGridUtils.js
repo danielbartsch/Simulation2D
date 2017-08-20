@@ -2,24 +2,25 @@
 
 import { range } from 'lodash'
 import { normalizedNoise } from './noise'
+import { map2D } from './array2D'
 import type { NoiseGrid } from '../flowTypes/Noise'
 
 const reduceNoiseGridValues = (noiseGrid: NoiseGrid, min: number, max: number, amountOfValues: number): NoiseGrid => {
 	const numberRange = max - min
 	const newValues = range(amountOfValues).map((_, index) => (numberRange / amountOfValues) * (index + 1))
 
-	return noiseGrid.map(yArray => yArray.map((value) => {
+	return map2D(noiseGrid, value => {
 		let i = 0
 
 		while (value < newValues[i] || value > (newValues[i + 1] || max)) {
 			i++
 		}
 		return newValues[i]
-	}))
+	})
 }
 
 const normalizeNoiseGrid = (noiseGrid: NoiseGrid, min: number, max: number): NoiseGrid =>
-	noiseGrid.map(yArray => yArray.map(value => (value + Math.abs(min)) / (max + Math.abs(min))))
+	map2D(noiseGrid, value => (value + Math.abs(min)) / (max + Math.abs(min)))
 
 export const generateNoiseGrid = (width: number, height: number) => {
 	const noiseGrid = new Array(width)

@@ -2,6 +2,7 @@
 
 import { range } from 'lodash'
 import { getRandomFoliageForTerrainType, canFoliageGrowOnXY } from './foliage'
+import { map2D } from './array2D'
 
 import type { Array2D } from '../flowTypes/'
 import type { NoiseGrid } from '../flowTypes/Noise'
@@ -14,7 +15,7 @@ export const noiseGridToFoliage = (noiseGrid: NoiseGrid, terrainGrid: Array2D<Te
 		y: parseInt(Math.random() * noiseGrid[0].length, 10)
 	}))
 
-	return noiseGrid.map((yArray, xNoise) => yArray.map((fertility, yNoise) => {
+	return map2D(noiseGrid, (fertility, xNoise, yNoise) => {
 		let foliage
 
 		if (foliagePositions.some(({ x, y }) => x === xNoise && y === yNoise)) {
@@ -25,5 +26,5 @@ export const noiseGridToFoliage = (noiseGrid: NoiseGrid, terrainGrid: Array2D<Te
 		}
 
 		return { fertility, foliage }
-	}))
+	})
 }

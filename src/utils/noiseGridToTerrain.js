@@ -6,6 +6,7 @@ import type { Array2D } from '../flowTypes/'
 import type { Terrain } from '../flowTypes/Terrain'
 import type { NoiseGrid } from '../flowTypes/Noise'
 import { getMedian } from './noiseGridUtils'
+import { map2D } from './array2D'
 
 const markNoiseGrid = (
 	noiseGrid: NoiseGrid,
@@ -60,12 +61,18 @@ export const noiseGridToTerrain = (noiseGrid: NoiseGrid): Array2D<Terrain> => {
 		y: parseInt(Math.random() * noiseGrid[0].length, 10)
 	}))
 
-	return lakePositions.reduce((noiseGridWithLakes, { x, y }) => (
-		noiseGrid[x][y] <= median ?
-			markLessThanValueNoiseGrid(noiseGridWithLakes, x, y, noiseGridWithLakes[x][y], waterMarkValue) :
-			noiseGridWithLakes
-	), noiseGrid).map(yArray => yArray.map((height: number): Terrain => ({
-		height: height > waterMarkValue ? height - waterMarkValue : height,
-		terrainType: height > waterMarkValue ? TerrainTypes.WATER : TerrainTypes.GRASS
-	})))
+	return map2D(
+		lakePositions.reduce(
+			(noiseGridWithLakes, { x, y }) => (
+				noiseGrid[x][y] <= median ?
+					markLessThanValueNoiseGrid(noiseGridWithLakes, x, y, noiseGridWithLakes[x][y], waterMarkValue) :
+					noiseGridWithLakes
+			),
+			noiseGrid
+		),
+		(height: number): Terrain => ({
+			height: height > waterMarkValue ? height - waterMarkValue : height,
+			terrainType: height > waterMarkValue ? TerrainTypes.WATER : TerrainTypes.GRASS
+		})
+	)
 }
