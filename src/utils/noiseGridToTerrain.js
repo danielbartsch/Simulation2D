@@ -64,8 +64,8 @@ export const noiseGridToTerrain = (noiseGrid: NoiseGrid): Array2D<Terrain> => {
 		noiseGrid[x][y] <= median ?
 			markLessThanValueNoiseGrid(noiseGridWithLakes, x, y, noiseGridWithLakes[x][y], waterMarkValue) :
 			noiseGridWithLakes
-	), noiseGrid).map(yArray => yArray.map(height => ({
+	), noiseGrid).map(yArray => yArray.map((height: number): Terrain => ({
 		height: height > waterMarkValue ? height - waterMarkValue : height,
-		terrain: height > waterMarkValue ? TerrainTypes.WATER : TerrainTypes.GRASS
+		terrainType: height > waterMarkValue ? TerrainTypes.WATER : TerrainTypes.GRASS
 	})))
 }

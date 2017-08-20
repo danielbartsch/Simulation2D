@@ -4,7 +4,7 @@ import * as TerrainTypes from '../constants/TerrainTypes'
 import type { TerrainType } from '../flowTypes/Terrain'
 import type { HSL } from '../flowTypes/Color'
 
-export const getTerrainHSLColor = (terrainType: TerrainType): HSL => {
+export const getTerrainTypeHSLColor = (terrainType: TerrainType): HSL => {
 	switch (terrainType) {
 	case TerrainTypes.GRASS:
 		return {

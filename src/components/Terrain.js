@@ -1,11 +1,12 @@
 // @flow
 
 import React, { Component } from 'react'
-import { getTerrainHSLColor } from '../utils/getTerrainHSLColor'
+import { getTerrainTypeHSLColor } from '../utils/getTerrainTypeHSLColor'
 
-import type { TerrainMap } from '../flowTypes/Terrain'
+import type { Terrain } from '../flowTypes/Terrain'
+import type { Array2D } from '../flowTypes/'
 
-class Terrain extends Component {
+class TerrainCanvas extends Component {
 	canvas: HTMLCanvasElement
 
 	props: {
@@ -13,7 +14,7 @@ class Terrain extends Component {
 		height: number,
 		pixelHeight: number,
 		pixelWidth: number,
-		terrainGrid: TerrainMap
+		terrainGrid: Array2D<Terrain>
 	}
 
 	componentDidMount() {
@@ -28,12 +29,12 @@ class Terrain extends Component {
 		context.beginPath()
 		for (let x = 0; x < terrainGrid.length; x++) {
 			for (let y = 0; y < terrainGrid[x].length; y++) {
-				const { terrain, height } = terrainGrid[x][y]
+				const { terrainType, height } = terrainGrid[x][y]
 
-				const { hue, saturation, lightness } = getTerrainHSLColor(terrain)
+				const { hue, saturation, lightness } = getTerrainTypeHSLColor(terrainType)
 
-				context.fillStyle = `hsl(${hue}, ${saturation}%, ${parseInt(lightness * height, 10)}%)`
-				context.fillRect(x * pixelWidth, (y * pixelHeight) - pixelHeight, pixelWidth, pixelHeight)
+				context.fillStyle = `hsl(${hue}, ${saturation}%, ${lightness * height}%)`
+				context.fillRect(x * pixelWidth, y * pixelHeight, pixelWidth, pixelHeight)
 			}
 		}
 	}
@@ -53,4 +54,4 @@ class Terrain extends Component {
 	}
 }
 
-export default Terrain
+export default TerrainCanvas
