@@ -1,7 +1,7 @@
 // @flow
 
 import { range } from 'lodash'
-import { getRandomFoliageForTerrainType } from './foliage'
+import { getRandomFoliageForTerrainType, canFoliageGrowOnXY } from './foliage'
 
 import type { Array2D } from '../flowTypes/'
 import type { NoiseGrid } from '../flowTypes/Noise'
@@ -19,10 +19,7 @@ export const noiseGridToFoliage = (noiseGrid: NoiseGrid, terrainGrid: Array2D<Te
 
 		if (foliagePositions.some(({ x, y }) => x === xNoise && y === yNoise)) {
 			foliage = getRandomFoliageForTerrainType(terrainGrid[xNoise][yNoise].terrainType)
-			if (
-                fertility < foliage.type.minimumGroundFertility ||
-                !foliage.type.terrainTypes.includes(terrainGrid[xNoise][yNoise].terrainType)
-            ) {
+			if (!canFoliageGrowOnXY(foliage, terrainGrid[xNoise][yNoise], { fertility })) {
 				foliage = undefined
 			}
 		}

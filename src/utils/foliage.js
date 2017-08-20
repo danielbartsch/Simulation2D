@@ -2,8 +2,8 @@
 
 import { reduce, map } from 'lodash'
 
-import type { Foliage, FoliageType } from '../flowTypes/Foliage'
-import type { TerrainType } from '../flowTypes/Terrain'
+import type { Foliage, FoliageType, FoliageGridElement } from '../flowTypes/Foliage'
+import type { Terrain, TerrainType } from '../flowTypes/Terrain'
 import * as FoliageTypes from '../constants/FoliageTypes'
 
 const getRandomFoliageType = (foliageTypes: Array<FoliageType>): FoliageType =>
@@ -25,12 +25,19 @@ export const getRandomFoliageForTerrainType = (terrainType: ?TerrainType): Folia
 
 	const hasGerminated = !Math.round(Math.random())
 
+	const age = Math.random() * foliageType.lifeExpectancy
+
 	return {
 		type: foliageType,
-		age: Math.random() * (foliageType.lifeExpectancy * 1.2),
-		hasGerminated,
+		age,
+		hasGerminated: age > (foliageType.lifeExpectancy * 0.01),
 		size: hasGerminated ? Math.random() : 0
 	}
 }
 
 export const getRandomFoliage = (): Foliage => getRandomFoliageForTerrainType()
+
+export const canFoliageGrowOnXY = (foliage: Foliage, terrain: Terrain, { fertility, foliage: foliageAtGrid }: FoliageGridElement) =>
+	!foliageAtGrid &&
+	foliage.type.terrainTypes.includes(terrain.terrainType) &&
+	fertility >= foliage.type.minimumGroundFertility
