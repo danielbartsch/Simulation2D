@@ -37,7 +37,11 @@ export const getRandomFoliageForTerrainType = (terrainType: ?TerrainType): Folia
 
 export const getRandomFoliage = (): Foliage => getRandomFoliageForTerrainType()
 
-export const canFoliageGrowOnXY = (foliage: Foliage, terrain: Terrain, { fertility, foliage: foliageAtGrid }: FoliageGridElement) =>
+export const canFoliageGrowOnXY = (
+	foliage: Foliage,
+	terrain: Terrain,
+	{ fertility, foliage: foliageAtGrid }: FoliageGridElement
+) =>
 	!foliageAtGrid &&
 	foliage.type.terrainTypes.includes(terrain.terrainType) &&
 	fertility >= foliage.type.minimumGroundFertility
