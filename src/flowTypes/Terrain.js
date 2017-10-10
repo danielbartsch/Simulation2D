@@ -6,5 +6,5 @@ export type TerrainType = $Keys<typeof TerrainTypes> // eslint-disable-line no-u
 
 export type Terrain = {
 	terrainType: TerrainType,
-	height: number
+	height: number,
 }

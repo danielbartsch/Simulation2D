@@ -13,11 +13,11 @@ export const CherryTree: FoliageType = {
 		type: SeedTypes.ANGIOSPERM,
 		kiloJoule: 21.7568,
 		isWaterProof: true,
-		stability: 0.8
+		stability: 0.8,
 	},
 	terrainTypes: [TerrainTypes.GRASS],
 	minimumGroundFertility: 0.6,
-	lifeExpectancy: 90
+	lifeExpectancy: 90,
 }
 
 export const AppleTree: FoliageType = {
@@ -26,11 +26,11 @@ export const AppleTree: FoliageType = {
 		type: SeedTypes.ANGIOSPERM,
 		kiloJoule: 397.48,
 		isWaterProof: true,
-		stability: 0.3
+		stability: 0.3,
 	},
 	terrainTypes: [TerrainTypes.GRASS],
 	minimumGroundFertility: 0.7,
-	lifeExpectancy: 75
+	lifeExpectancy: 75,
 }
 
 export const WalnutTree: FoliageType = {
@@ -39,11 +39,11 @@ export const WalnutTree: FoliageType = {
 		type: SeedTypes.ANGIOSPERM,
 		kiloJoule: 54.392,
 		isWaterProof: false,
-		stability: 0.5
+		stability: 0.5,
 	},
 	terrainTypes: [TerrainTypes.GRASS],
 	minimumGroundFertility: 0.5,
-	lifeExpectancy: 85
+	lifeExpectancy: 85,
 }
 
 export const WillowTree: FoliageType = {
@@ -52,11 +52,11 @@ export const WillowTree: FoliageType = {
 		type: SeedTypes.ANGIOSPERM,
 		kiloJoule: 0.08,
 		isWaterProof: false,
-		stability: 0.5
+		stability: 0.5,
 	},
 	terrainTypes: [TerrainTypes.GRASS],
 	minimumGroundFertility: 0.6,
-	lifeExpectancy: 130
+	lifeExpectancy: 130,
 }
 
 export const Dandelion: FoliageType = {
@@ -65,11 +65,11 @@ export const Dandelion: FoliageType = {
 		type: SeedTypes.ANGIOSPERM,
 		kiloJoule: 0.01,
 		isWaterProof: false,
-		stability: 0.1
+		stability: 0.1,
 	},
 	terrainTypes: [TerrainTypes.GRASS],
 	minimumGroundFertility: 0.3,
-	lifeExpectancy: 0.5
+	lifeExpectancy: 0.5,
 }
 
 export const WaterLily: FoliageType = {
@@ -78,11 +78,11 @@ export const WaterLily: FoliageType = {
 		type: SeedTypes.ANGIOSPERM,
 		kiloJoule: 0.04,
 		isWaterProof: true,
-		stability: 0.5
+		stability: 0.5,
 	},
 	terrainTypes: [TerrainTypes.WATER],
 	minimumGroundFertility: 0.7,
-	lifeExpectancy: 6
+	lifeExpectancy: 6,
 }
 
 export const RaspberryBush: FoliageType = {
@@ -91,11 +91,11 @@ export const RaspberryBush: FoliageType = {
 		type: SeedTypes.ANGIOSPERM,
 		kiloJoule: 4.184,
 		isWaterProof: false,
-		stability: 0.05
+		stability: 0.05,
 	},
 	terrainTypes: [TerrainTypes.GRASS],
 	minimumGroundFertility: 0.6,
-	lifeExpectancy: 10
+	lifeExpectancy: 10,
 }
 
 export const StrawberryPlant: FoliageType = {
@@ -104,9 +104,9 @@ export const StrawberryPlant: FoliageType = {
 		type: SeedTypes.ANGIOSPERM,
 		kiloJoule: 25.104,
 		isWaterProof: false,
-		stability: 0.1
+		stability: 0.1,
 	},
 	terrainTypes: [TerrainTypes.GRASS],
 	minimumGroundFertility: 0.4,
-	lifeExpectancy: 0.5
+	lifeExpectancy: 0.5,
 }

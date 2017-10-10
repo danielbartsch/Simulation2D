@@ -13,21 +13,21 @@ export type Seed = {
     type: SeedType,
     kiloJoule: number,
     isWaterProof: boolean,
-    stability: number
+    stability: number,
 }
 
 export type FoliageType = {
     seed: Seed,
     terrainTypes: Array<TerrainType>,
 	minimumGroundFertility: number,
-	lifeExpectancy: number // in years
+	lifeExpectancy: number, // in years
 }
 
 export type Foliage = {
     type: FoliageType,
     age: number,
     size: number,
-    hasGerminated: boolean
+    hasGerminated: boolean,
 }
 
 export type FoliageGridElement = { fertility: number, foliage?: Foliage }

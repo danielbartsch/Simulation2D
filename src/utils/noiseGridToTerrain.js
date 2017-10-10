@@ -58,7 +58,7 @@ export const noiseGridToTerrain = (noiseGrid: NoiseGrid): Array2D<Terrain> => {
 
 	const lakePositions = range(3).map(() => ({
 		x: parseInt(Math.random() * noiseGrid.length, 10),
-		y: parseInt(Math.random() * noiseGrid[0].length, 10)
+		y: parseInt(Math.random() * noiseGrid[0].length, 10),
 	}))
 
 	return map2D(
@@ -72,7 +72,7 @@ export const noiseGridToTerrain = (noiseGrid: NoiseGrid): Array2D<Terrain> => {
 		),
 		(height: number): Terrain => ({
 			height: height > waterMarkValue ? height - waterMarkValue : height,
-			terrainType: height > waterMarkValue ? TerrainTypes.WATER : TerrainTypes.GRASS
+			terrainType: height > waterMarkValue ? TerrainTypes.WATER : TerrainTypes.GRASS,
 		})
 	)
 }

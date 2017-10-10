@@ -69,6 +69,6 @@ export const getQuartiles = (noiseGrid: NoiseGrid): Array<number> => {
 	return [
 		points[Math.floor(points.length / 4)],
 		points[Math.floor(points.length / 2)],
-		points[Math.floor((points.length / 4) * 3)]
+		points[Math.floor((points.length / 4) * 3)],
 	]
 }

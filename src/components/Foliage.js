@@ -15,11 +15,11 @@ type Props = {
 	pixelHeight: number,
 	pixelWidth: number,
 	foliageGrid: FoliageGrid,
-	terrainGrid: Array2D<Terrain>
+	terrainGrid: Array2D<Terrain>,
 }
 
 type State = {
-	foliageGrid: FoliageGrid
+	foliageGrid: FoliageGrid,
 }
 
 class FoliageCanvas extends Component {
@@ -31,7 +31,7 @@ class FoliageCanvas extends Component {
 	constructor(props: Props) {
 		super(props)
 		this.state = {
-			foliageGrid: props.foliageGrid
+			foliageGrid: props.foliageGrid,
 		}
 	}
 
@@ -46,7 +46,7 @@ class FoliageCanvas extends Component {
 				if (canFoliageGrowOnXY(foliage, this.props.terrainGrid[x][y], foliageGrid[x][y])) {
 					foliageGrid[x][y] = { // eslint-disable-line no-param-reassign
 						...foliageGrid[x][y],
-						foliage
+						foliage,
 					}
 				}
 			}
@@ -81,8 +81,8 @@ class FoliageCanvas extends Component {
 									foliage: {
 										...foliage,
 										age,
-										size
-									}
+										size,
+									},
 								})
 							}
 
@@ -93,8 +93,8 @@ class FoliageCanvas extends Component {
 									...foliage,
 									hasGerminated,
 									age,
-									size
-								}
+									size,
+								},
 							}
 						}
 					)
@@ -105,7 +105,7 @@ class FoliageCanvas extends Component {
 								...foliage,
 								age: 0,
 								size: 0,
-								hasGerminated: false
+								hasGerminated: false,
 							}
 
 							foliage.type.seed.dispersalTypes.forEach(dispersalType => {
@@ -133,7 +133,7 @@ class FoliageCanvas extends Component {
 							})
 
 							return foliageGrid
-						}, agedFoliageGrid)
+						}, agedFoliageGrid),
 					})
 				},
 				400

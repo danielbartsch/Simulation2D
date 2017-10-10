@@ -31,7 +31,7 @@ export const getRandomFoliageForTerrainType = (terrainType: ?TerrainType): Folia
 		type: foliageType,
 		age,
 		hasGerminated: age > (foliageType.lifeExpectancy * 0.01),
-		size: hasGerminated ? Math.random() : 0
+		size: hasGerminated ? Math.random() : 0,
 	}
 }
 

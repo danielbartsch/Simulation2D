@@ -21,13 +21,14 @@
         "flowtype"
     ],
     "rules": {
-        "max-len": [1, { "code": 120, "tabWidth": 4 }],
+        "max-len": [1, { "code": 120, "tabWidth": 4, "ignoreComments": true }],
         "linebreak-style": ["error", "unix"],
         "indent": ["error", "tab"],
         "react/jsx-indent": ["error", "tab"],
         "quotes": ["error", "single"],
         "semi": ["error", "never"],
-        "comma-dangle": ["error", "never"],
+        "comma-dangle": ["error", "always-multiline"],
+        "flowtype/delimiter-dangle": ["error", "always-multiline"],
         "no-tabs": 0,
         "no-plusplus": 0,
         "no-bitwise": 0,

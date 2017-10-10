@@ -12,7 +12,7 @@ import type { Terrain } from '../flowTypes/Terrain'
 export const noiseGridToFoliage = (noiseGrid: NoiseGrid, terrainGrid: Array2D<Terrain>): FoliageGrid => {
 	const foliagePositions = range(30).map(() => ({
 		x: parseInt(Math.random() * noiseGrid.length, 10),
-		y: parseInt(Math.random() * noiseGrid[0].length, 10)
+		y: parseInt(Math.random() * noiseGrid[0].length, 10),
 	}))
 
 	return map2D(noiseGrid, (fertility, xNoise, yNoise) => {

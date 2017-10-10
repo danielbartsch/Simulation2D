@@ -14,7 +14,7 @@ class TerrainCanvas extends Component {
 		height: number,
 		pixelHeight: number,
 		pixelWidth: number,
-		terrainGrid: Array2D<Terrain>
+		terrainGrid: Array2D<Terrain>,
 	}
 
 	componentDidMount() {
@@ -44,7 +44,7 @@ class TerrainCanvas extends Component {
 
 		return (
 			<canvas
-				ref={(ref) => { this.canvas = ref }}
+				ref={ref => { this.canvas = ref }}
 				width={width}
 				height={height}
 			>
